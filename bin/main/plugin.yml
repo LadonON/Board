@@ -1,0 +1,20 @@
+name: Board
+version: '1.0'
+main: github.ladonON.board.Board
+api-version: '1.21'
+
+
+commands:
+  board:
+    description: Main command for board
+    usage: /board <args>
+    permission: board.use
+
+
+permissions:
+  board.use:
+    description: Allows you to use basic commands
+    default: true
+  board.admin:
+    description: Admin commands for board
+    default: op

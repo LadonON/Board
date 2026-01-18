@@ -1,0 +1,107 @@
+# The URL to be displayed when the user asks for help
+help-url: "https://github.com/LadonON"
+
+# The message to be displayed when the user hovers over the help message
+help-hover-msg: "I am a default value"
+
+# The message to be displayed when the user asks for help
+help-msg: "Please help!"
+
+update-interval: 1800
+
+leaderboards:
+  test:
+    title: "Hello World!"
+    placeholder: "%player_level%"
+    prefix: "Top Players"
+    
+    # Text Formatting
+    titleFormat: "<gradient:#ff6000:#ffc663>--------- {title} ---------</gradient>"
+    footerFormat: "<gradient:#ffc663:#ff6000>----------------------------</gradient>"
+    placeFormats:
+      - "<color:#fdcc00><bold>1.</bold></color> {head} <color:#fdcc00>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+      - "<color:#dcdcdc><bold>2.</bold></color> {head} <color:#dcdcdc>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+      - "<color:#e65f2f><bold>3.</bold></color> {head} <color:#e65f2f>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+    defaultPlaceFormat: "<color:#ffb486><bold>{place}.</bold></color> {head} <color:#ffb486>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+    
+    # Visual Settings
+    leaderboardType: "TOP_PLAYER_HEAD"  # SIMPLE_TEXT, TOP_PLAYER_HEAD, ALL_PLAYER_HEADS
+    rotationMode: "DYNAMIC"             # DYNAMIC, FIXED
+    headMode: "ITEM_DISPLAY"           # ITEM_DISPLAY, RESOURCEPACK
+    sortOrder: "DESCENDING"             # DESCENDING, ASCENDING
+    
+    # Layout Settings
+    lineHeight: 0.25                   # Space between entries
+    backgroundWidth: 40.0              # Width of background
+    background: true                   # Show background
+    backgroundColor: 0x54000000         # Background color (ARGB)
+    
+    # Display Settings
+    maxDisplayEntries: 10              # Max entries to show
+    showEmptyPlaces: true              # Show empty slots
+    decimalNumbers: false              # Use decimal numbers
+    numberLocale: "GERMANY"            # Number formatting locale
+    
+  kills:
+    title: "Kills"
+    placeholder: "%player_total_kills%"
+    prefix: "Combat Stats"
+    
+    # Text Formatting
+    titleFormat: "<gradient:#ff0000:#ff6666>⚔️ {title} ⚔️</gradient>"
+    footerFormat: "<gradient:#ff6666:#ff0000>────────────────────</gradient>"
+    placeFormats:
+      - "<color:#ff0000><bold>🥇 {place}.</bold></color> {head} <color:#ff0000>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
+      - "<color:#ff6666><bold>🥈 {place}.</bold></color> {head} <color:#ff6666>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
+      - "<color:#ff9999><bold>🥉 {place}.</bold></color> {head} <color:#ff9999>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
+    defaultPlaceFormat: "<color:#ffcccc><bold>{place}.</bold></color> {head} <color:#ffcccc>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
+    
+    # Visual Settings
+    leaderboardType: "TOP_PLAYER_HEAD"
+    rotationMode: "DYNAMIC"
+    headMode: "ITEM_DISPLAY"
+    sortOrder: "DESCENDING"
+    
+    # Layout Settings
+    lineHeight: 0.3
+    backgroundWidth: 45.0
+    background: true
+    backgroundColor: 0x54000000
+    
+    # Display Settings
+    maxDisplayEntries: 15
+    showEmptyPlaces: true
+    decimalNumbers: false
+    numberLocale: "US"
+    
+  blocks:
+    title: "Blocks Mined"
+    placeholder: "%player_blocks_mined%"
+    prefix: "Mining"
+    
+    # Text Formatting
+    titleFormat: "<gradient:#8B4513:#FFD700>⛏️ {title} ⛏️</gradient>"
+    footerFormat: "<gradient:#FFD700:#8B4513>═══════════════════════════</gradient>"
+    placeFormats:
+      - "<color:#FFD700><bold>⭐ {place}.</bold></color> {head} <color:#FFD700>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
+      - "<color:#C0C0C0><bold>⭐ {place}.</bold></color> {head} <color:#C0C0C0>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
+      - "<color:#CD7F32><bold>⭐ {place}.</bold></color> {head} <color:#CD7F32>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
+    defaultPlaceFormat: "<color:#DEB887><bold>{place}.</bold></color> {head} <color:#DEB887>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
+    
+    # Visual Settings
+    leaderboardType: "SIMPLE_TEXT"
+    rotationMode: "DYNAMIC"
+    headMode: "ITEM_DISPLAY"
+    sortOrder: "DESCENDING"
+    
+    # Layout Settings
+    lineHeight: 0.2
+    backgroundWidth: 35.0
+    background: true
+    backgroundColor: 0x54000000
+    
+    # Display Settings
+    maxDisplayEntries: 20
+    showEmptyPlaces: false
+    decimalNumbers: true
+    numberLocale: "US"
