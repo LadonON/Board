@@ -1,23 +1,21 @@
-# Board Plugin - Advanced Minecraft Leaderboards
+# Board
 
 A powerful Bukkit/Spigot plugin for creating customizable, persistent leaderboards with rich formatting options.
 
 ## Features
 
-- 🏆 **Custom Leaderboards**: Create multiple leaderboards for different statistics
-- 🎨 **Rich Formatting**: Full customization with gradients, colors, and custom formats
-- 💾 **Persistent Storage**: Leaderboards automatically respawn after server restarts
-- 🔄 **Auto Updates**: Configurable update intervals for real-time score tracking
-- 🌍 **PlaceholderAPI Support**: Track any statistic using placeholders
-- 📊 **Database Storage**: SQLite database for reliable score persistence
+-  **Custom Leaderboards**: Create multiple leaderboards for different statistics
+-  **Rich Formatting**: Full customization with gradients, colors, and custom formats
+-  **Persistent Storage**: Leaderboards automatically respawn after server restarts
+-  **Auto Updates**: Configurable update intervals for real-time score tracking
+- **PlaceholderAPI Support**: Track any statistic using placeholders
+- **Database Storage**: SQLite database for reliable score persistence
 
 ## Commands
 
 - `/board spawn <leaderboard>` - Spawn a leaderboard at your location
 - `/board remove <leaderboard>` - Remove a spawned leaderboard
 - `/board update` - Manually trigger score updates
-- `/board test <placeholder>` - Test placeholder resolution
-- `/board debug` - Test updater functionality
 - `/board help` - Show help information
 
 ## Configuration
