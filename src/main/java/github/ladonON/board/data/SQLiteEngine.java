@@ -201,6 +201,24 @@ public class SQLiteEngine {
         }
     }
 
+    public void removeLeaderboardLocation(String leaderboardId) {
+        logger.info("Removing location for leaderboard '" + leaderboardId + "'");
+        String sql = "DELETE FROM leaderboard_locations WHERE leaderboard_id = ?";
+        
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, leaderboardId);
+            
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                logger.info("Leaderboard location removed successfully for '" + leaderboardId + "'");
+            } else {
+                logger.info("No location found for leaderboard '" + leaderboardId + "'");
+            }
+        } catch (SQLException e) {
+            logger.severe("Error removing leaderboard location for '" + leaderboardId + "': " + e.getMessage());
+        }
+    }
+
     public Location loadLeaderboardLocation(String leaderboardId) {
         String sql = "SELECT world, x, y, z, yaw, pitch FROM leaderboard_locations WHERE leaderboard_id = ?";
         

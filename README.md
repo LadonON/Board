@@ -197,3 +197,88 @@ This plugin is released under the MIT License. See [LICENSE](LICENSE) for detail
 ---
 
 **Made with ❤️ by LadonON**
+# Configuration
+
+This guide provides an overview of the configuration options available in the `config.yml` file.
+
+## General Settings
+
+- `help-url`: The URL displayed when a user requests help.
+- `help-hover-msg`: The message shown when a user hovers over the help message.
+- `help-msg`: The message displayed when a user asks for help.
+- `update-interval`: The interval in seconds at which the leaderboard updates.
+
+## Leaderboards
+
+This section allows you to define multiple leaderboards with different configurations.
+
+### Leaderboard Options
+
+- `title`: The title of the leaderboard.
+- `placeholder`: The placeholder to be replaced with the player's score.
+- `prefix`: The prefix to be displayed before the leaderboard.
+
+### Text Formatting
+
+- `titleFormat`: The format of the leaderboard title.
+- `footerFormat`: The format of the leaderboard footer.
+- `placeFormats`: A list of formats for the top players.
+- `defaultPlaceFormat`: The default format for players not in the top list.
+
+### Visual Settings
+
+- `leaderboardType`: The type of leaderboard. Can be `SIMPLE_TEXT`, `TOP_PLAYER_HEAD`, or `ALL_PLAYER_HEADS`.
+- `rotationMode`: The rotation mode of the leaderboard. Can be `DYNAMIC` or `FIXED`.
+- `headMode`: The mode for displaying player heads. Can be `ITEM_DISPLAY` or `RESOURCEPACK`.
+- `sortOrder`: The sorting order of the leaderboard. Can be `DESCENDING` or `ASCENDING`.
+
+### Layout Settings
+
+- `lineHeight`: The space between leaderboard entries.
+- `backgroundWidth`: The width of the leaderboard background.
+- `background`: Whether to show the leaderboard background.
+- `backgroundColor`: The color of the leaderboard background in ARGB format.
+
+### Display Settings
+
+- `maxDisplayEntries`: The maximum number of entries to display.
+- `showEmptyPlaces`: Whether to show empty places in the leaderboard.
+- `decimalNumbers`: Whether to use decimal numbers for scores.
+- `numberLocale`: The locale for number formatting.
+
+### Example Leaderboard Configuration
+
+```yaml
+leaderboards:
+  test:
+    title: "Hello World!"
+    placeholder: "%player_level%"
+    prefix: "Top Players"
+    
+    # Text Formatting
+    titleFormat: "<gradient:#ff6000:#ffc663>--------- {title} ---------</gradient>"
+    footerFormat: "<gradient:#ffc663:#ff6000>----------------------------</gradient>"
+    placeFormats:
+      - "<color:#fdcc00><bold>1.</bold></color> {head} <color:#fdcc00>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+      - "<color:#dcdcdc><bold>2.</bold></color> {head} <color:#dcdcdc>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+      - "<color:#e65f2f><bold>3.</bold></color> {head} <color:#e65f2f>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+    defaultPlaceFormat: "<color:#ffb486><bold>{place}.</bold></color> {head} <color:#ffb486>{name}</color> {extra} <gray>{score}</gray> <white>{suffix}</white>"
+    
+    # Visual Settings
+    leaderboardType: "TOP_PLAYER_HEAD"
+    rotationMode: "DYNAMIC"
+    headMode: "ITEM_DISPLAY"
+    sortOrder: "DESCENDING"
+    
+    # Layout Settings
+    lineHeight: 0.25
+    backgroundWidth: 40.0
+    background: true
+    backgroundColor: 0x54000000
+    
+    # Display Settings
+    maxDisplayEntries: 10
+    showEmptyPlaces: true
+    decimalNumbers: false
+    numberLocale: "GERMANY"
+```

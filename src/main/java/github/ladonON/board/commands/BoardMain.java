@@ -60,18 +60,6 @@ public class BoardMain implements CommandExecutor {
                 subcommand_update(sender);
                 return true;
 
-            case "test":
-                if (args.length < 2) {
-                    sender.sendMessage(ChatColor.RED + "Usage: /board test <placeholder>");
-                    return true;
-                }
-                subcommand_test(sender, args[1]);
-                return true;
-
-            case "debug":
-                subcommand_debug(sender);
-                return true;
-
             case "remove":
                 if (args.length < 2) {
                     sender.sendMessage(ChatColor.RED + "Usage: /board remove <leaderboard>");
@@ -138,59 +126,6 @@ public class BoardMain implements CommandExecutor {
         }
     }
 
-    private void subcommand_test(CommandSender sender, String placeholder) {
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "Only players can test placeholders!");
-            return;
-        }
-        if (!(sender.hasPermission("board.admin"))) return;
-
-        if (!(plugin instanceof github.ladonON.board.Board mainPlugin)) {
-            sender.sendMessage(ChatColor.RED + "Plugin instance error.");
-            return;
-        }
-
-        Updater updater = mainPlugin.getUpdater();
-        if (updater != null) {
-            Map<String, Integer> scores = updater.getPlayerScores(player);
-            sender.sendMessage(ChatColor.GREEN + "Placeholder test results for " + player.getName() + ":");
-            for (Map.Entry<String, Integer> entry : scores.entrySet()) {
-                sender.sendMessage(ChatColor.YELLOW + "  " + entry.getKey() + ": " + entry.getValue());
-            }
-        } else {
-            sender.sendMessage(ChatColor.RED + "Updater not available!");
-        }
-    }
-
-    private void subcommand_debug(CommandSender sender) {
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "Only players can debug!");
-            return;
-        }
-        if (!(sender.hasPermission("board.admin"))) return;
-        if (!(plugin instanceof github.ladonON.board.Board mainPlugin)) {
-            sender.sendMessage(ChatColor.RED + "Plugin instance error.");
-            return;
-        }
-
-        Updater updater = mainPlugin.getUpdater();
-        if (updater != null) {
-            sender.sendMessage(ChatColor.GREEN + "Testing UP");
-            
-            Map<String, Integer> scores = updater.getPlayerScores(player);
-            sender.sendMessage(ChatColor.YELLOW + "Collected scores for " + player.getName() + ":");
-            for (Map.Entry<String, Integer> entry : scores.entrySet()) {
-                sender.sendMessage(ChatColor.AQUA + "  " + entry.getKey() + ": " + entry.getValue());
-            }
-            
-            sender.sendMessage(ChatColor.GREEN + "Testing database save");
-            updater.runAll();
-            sender.sendMessage(ChatColor.GREEN + "UP test completed");
-        } else {
-            sender.sendMessage(ChatColor.RED + "UP not avaliable");
-        }
-    }
-
     private void subcommand_remove(CommandSender sender, String id) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "Only players can remove leaderboards!");
@@ -215,8 +150,9 @@ public class BoardMain implements CommandExecutor {
                 sender.sendMessage(ChatColor.YELLOW + "Leaderboard '" + id + "' was not currently spawned.");
             }
             
-            // TODO: Remove from database locations table (would need to add method to SQLiteEngine)
-            sender.sendMessage(ChatColor.YELLOW + "Note: Location data is not yet removed from database. This will be added in a future update.");
+            // Remove from database locations table
+            updater.getDatabase().removeLeaderboardLocation(id);
+            sender.sendMessage(ChatColor.GREEN + "Leaderboard '" + id + "' and its location data removed");
         } else {
             sender.sendMessage(ChatColor.RED + "Updater not available!");
         }

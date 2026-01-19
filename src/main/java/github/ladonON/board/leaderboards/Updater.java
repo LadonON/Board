@@ -172,7 +172,7 @@ public class Updater {
                         .footerFormat(data.footerFormat)
                         .placeFormats(data.placeFormats)
                         .defaultPlaceFormat(data.defaultPlaceFormat)
-                        .suffix(data.title.toLowerCase() + "s")
+                        .suffix(data.title.toLowerCase())
                         .maxDisplayEntries(data.maxDisplayEntries)
                         .showEmptyPlaces(data.showEmptyPlaces)
                         .leaderboardType(LeaderboardHologram.LeaderboardType.SIMPLE_TEXT) // Temporarily forced to avoid NPE

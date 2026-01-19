@@ -48,12 +48,12 @@ leaderboards:
     prefix: "Combat Stats"
     
     # Text Formatting
-    titleFormat: "<gradient:#ff0000:#ff6666>⚔️ {title} ⚔️</gradient>"
+    titleFormat: "<gradient:#ff0000:#ff6666> {title} </gradient>"
     footerFormat: "<gradient:#ff6666:#ff0000>────────────────────</gradient>"
     placeFormats:
-      - "<color:#ff0000><bold>🥇 {place}.</bold></color> {head} <color:#ff0000>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
-      - "<color:#ff6666><bold>🥈 {place}.</bold></color> {head} <color:#ff6666>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
-      - "<color:#ff9999><bold>🥉 {place}.</bold></color> {head} <color:#ff9999>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
+      - "<color:#ff0000><bold> {place}.</bold></color> {head} <color:#ff0000>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
+      - "<color:#ff6666><bold> {place}.</bold></color> {head} <color:#ff6666>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
+      - "<color:#ff9999><bold> {place}.</bold></color> {head} <color:#ff9999>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
     defaultPlaceFormat: "<color:#ffcccc><bold>{place}.</bold></color> {head} <color:#ffcccc>{name}</color> <gray>{score}</gray> <red>{suffix}</red>"
     
     # Visual Settings
@@ -80,12 +80,12 @@ leaderboards:
     prefix: "Mining"
     
     # Text Formatting
-    titleFormat: "<gradient:#8B4513:#FFD700>⛏️ {title} ⛏️</gradient>"
+    titleFormat: "<gradient:#8B4513:#FFD700> {title} </gradient>"
     footerFormat: "<gradient:#FFD700:#8B4513>═══════════════════════════</gradient>"
     placeFormats:
-      - "<color:#FFD700><bold>⭐ {place}.</bold></color> {head} <color:#FFD700>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
-      - "<color:#C0C0C0><bold>⭐ {place}.</bold></color> {head} <color:#C0C0C0>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
-      - "<color:#CD7F32><bold>⭐ {place}.</bold></color> {head} <color:#CD7F32>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
+      - "<color:#FFD700><bold> {place}.</bold></color> {head} <color:#FFD700>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
+      - "<color:#C0C0C0><bold> {place}.</bold></color> {head} <color:#C0C0C0>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
+      - "<color:#CD7F32><bold> {place}.</bold></color> {head} <color:#CD7F32>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
     defaultPlaceFormat: "<color:#DEB887><bold>{place}.</bold></color> {head} <color:#DEB887>{name}</color> <gray>{score}</gray> <gold>{suffix}</gold>"
     
     # Visual Settings
