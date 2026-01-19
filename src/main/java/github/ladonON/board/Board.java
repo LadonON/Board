@@ -2,6 +2,7 @@ package github.ladonON.board;
 
 import com.maximde.hologramlib.HologramLib;
 import github.ladonON.board.commands.BoardMain;
+import github.ladonON.board.listeners.HologramInteractListener;
 import github.ladonON.board.leaderboards.Updater;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,10 +25,14 @@ public final class Board extends JavaPlugin {
 
         HologramLib.init();
 
+        // Register event listeners
+        getServer().getPluginManager().registerEvents(new HologramInteractListener(this), this);
+
         if (getCommand("board") != null) {
             getCommand("board").setExecutor(new BoardMain(this));
+        } else {
+            getLogger().warning("Board command not found in plugin.yml!");
         }
-
         updater = new Updater(this);
 
         int intervalTicks = getConfig().getInt("update-interval", 60) * 20;

@@ -219,7 +219,20 @@ public class SQLiteEngine {
         }
     }
 
+    public void removeLeaderboardTable(String tableName) {
+        logger.info("Removing leaderboard table: " + tableName);
+        String sql = "DROP TABLE IF EXISTS " + tableName;
+        
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute(sql);
+            logger.info("Leaderboard table '" + tableName + "' removed successfully");
+        } catch (SQLException e) {
+            logger.severe("Error removing leaderboard table '" + tableName + "': " + e.getMessage());
+        }
+    }
+
     public Location loadLeaderboardLocation(String leaderboardId) {
+        logger.info("Loading location for leaderboard '" + leaderboardId + "'");
         String sql = "SELECT world, x, y, z, yaw, pitch FROM leaderboard_locations WHERE leaderboard_id = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {

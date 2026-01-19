@@ -60,14 +60,6 @@ public class BoardMain implements CommandExecutor {
                 subcommand_update(sender);
                 return true;
 
-            case "remove":
-                if (args.length < 2) {
-                    sender.sendMessage(ChatColor.RED + "Usage: /board remove <leaderboard>");
-                    return true;
-                }
-                subcommand_remove(sender, args[1]);
-                return true;
-
             default:
                 sender.sendMessage(ChatColor.RED + "Unknown subcommand.");
                 return true;
@@ -116,38 +108,6 @@ public class BoardMain implements CommandExecutor {
         }
     }
 
-    private void subcommand_remove(CommandSender sender, String id) {
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "Only players can remove leaderboards!");
-            return;
-        }
-
-        if (!(plugin instanceof github.ladonON.board.Board mainPlugin)) {
-            sender.sendMessage(ChatColor.RED + "Plugin instance error.");
-            return;
-        }
-
-        Updater updater = mainPlugin.getUpdater();
-        if (updater != null) {
-            // Remove from live leaderboards
-            Map<String, LeaderboardHologram> liveLeaderboards = updater.getLiveLeaderboards();
-            if (liveLeaderboards.containsKey(id)) {
-                LeaderboardHologram hologram = liveLeaderboards.get(id);
-                HologramLib.getManager().get().remove(hologram);
-                liveLeaderboards.remove(id);
-                sender.sendMessage(ChatColor.GREEN + "Leaderboard '" + id + "' removed");
-            } else {
-                sender.sendMessage(ChatColor.YELLOW + "Leaderboard '" + id + "' was not currently spawned.");
-            }
-            
-            // Remove from database locations table
-            updater.getDatabase().removeLeaderboardLocation(id);
-            sender.sendMessage(ChatColor.GREEN + "Leaderboard '" + id + "' and its location data removed");
-        } else {
-            sender.sendMessage(ChatColor.RED + "Updater not available!");
-        }
-    }
-
     private void spawnLeaderboard(CommandSender sender, String id) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "Only players can spawn leaderboards!");
@@ -161,10 +121,26 @@ public class BoardMain implements CommandExecutor {
 
         Updater updater = mainPlugin.getUpdater();
         Map<String, GetLeaderboard.BoardData> boards = updater.getAllBoards();
+        Map<String, LeaderboardHologram> liveLeaderboards = updater.getLiveLeaderboards();
 
         if (!boards.containsKey(id)) {
             sender.sendMessage(ChatColor.RED + "Leaderboard '" + id + "' not found");
             return;
+        }
+
+        // Check if leaderboard of this type already exists
+        if (liveLeaderboards.containsKey(id)) {
+            sender.sendMessage(ChatColor.RED + "Leaderboard '" + id + "' already exists. Punch the existing one to remove it first.");
+            return;
+        }
+
+        // Check if any hologram already exists at this location (prevent duplicates)
+        org.bukkit.Location spawnLocation = player.getLocation();
+        for (LeaderboardHologram existingHologram : liveLeaderboards.values()) {
+            if (existingHologram.getLocation().distance(spawnLocation) < 1.0) {
+                sender.sendMessage(ChatColor.RED + "Another leaderboard already exists at this location. Move further away or punch the existing one first.");
+                return;
+            }
         }
 
         GetLeaderboard.BoardData data = boards.get(id);
