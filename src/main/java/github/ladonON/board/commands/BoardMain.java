@@ -29,7 +29,7 @@ public class BoardMain implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        if (!sender.hasPermission("board.use")) {
+        if (!sender.hasPermission("board.admin")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to use this command");
             return true;
         }
@@ -90,11 +90,6 @@ public class BoardMain implements CommandExecutor {
     }
 
     private void subcommand_reload(CommandSender sender) {
-        if (!sender.hasPermission("board.admin")) {
-            sender.sendMessage(ChatColor.RED + "No Permission!");
-            return;
-        }
-
         plugin.reloadConfig();
         sender.sendMessage(ChatColor.GREEN + "Board config reloaded!");
 
@@ -108,11 +103,6 @@ public class BoardMain implements CommandExecutor {
     }
 
     private void subcommand_update(CommandSender sender) {
-        if (!sender.hasPermission("board.admin")) {
-            sender.sendMessage(ChatColor.RED + "No Permission!");
-            return;
-        }
-
         if (plugin instanceof github.ladonON.board.Board mainPlugin) {
             Updater updater = mainPlugin.getUpdater();
             if (updater != null) {
