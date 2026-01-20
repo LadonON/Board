@@ -87,7 +87,7 @@ leaderboards:
 
 ## Dependencies
 
-- **Spigot/Bukkit**: 1.19+ (tested on 1.19.4)
+- **Spigot/Bukkit**: 1.21+ (tested on 1.21.11)
 - **PlaceholderAPI**: Required for placeholder support
 - **HologramLib**: Required for holographic display
 
