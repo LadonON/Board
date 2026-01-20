@@ -6,10 +6,7 @@ A powerful Bukkit/Spigot plugin for creating customizable, persistent leaderboar
 ## Commands
 
 - `/board spawn <leaderboard>` - Spawn a leaderboard at your location
-- `/board remove <leaderboard>` - Remove a spawned leaderboard
 - `/board update` - Manually trigger score updates
-- `/board test <placeholder>` - Test placeholder resolution
-- `/board debug` - Test updater functionality
 - `/board help` - Show help information
 
 ## Configuration
